@@ -8,9 +8,8 @@ using namespace sf;
 class pix
 {
 public:
-
-    pix(float const& _speed, Vector2f const& _position); //OVERLOAD 1 SPEED POSITION
-    pix(float const& _speed, Vector2f const& _position, Color const& _color); //OVERLOAD 2 SPEED POSITION COLOR
+    pix(float const& _speed, Vector2f const& _position);
+    pix(float const& _speed, Vector2f const& _position, Color const& _color);
 
     Vector2f get_position();
     Vector2f get_direction();

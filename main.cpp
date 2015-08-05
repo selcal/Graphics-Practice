@@ -2,24 +2,27 @@
 #include <SFML/Graphics.hpp>
     ///Standard: ///
 #include <iostream>
-#include <cstdlib>
 #include <fstream>
 #include <ctime>
-    /// Effects: ///
-#include "flixel.h"
 
-///globals
+#include "manager.h" //'plays' certain effects and returns information about them.
+/// Effects: ///
+
 using namespace sf;
 
-const int windowWidth = 600;
-const int windowHeight = 600;
-int flixelCount = 420;
-
-bool fullscreen;
 std::fstream file;
+
+int effectDisplayed = 0;
+
+bool showTextHUD = true;
+
+const int windowWidth = 1366;
+const int windowHeight = 768;
 
 int main()
 {
+    manager man;
+
     /*Options File Parsing*/
 
     srand(time(NULL));
@@ -30,43 +33,60 @@ int main()
     Clock dt;
     float deltaTime = 1.0;
 
-    vector<pix> flixels;
+    Font font;
+    if(!font.loadFromFile("font.ttf"))
+        return EXIT_FAILURE;
 
-    int positionX = windowWidth / 2;
-    int positionY = windowHeight / 2;
+    Text info(" Left/Right - Change effect \n Up/Down - Change number of elements if possible \n H - Hide this text.",font,12);
+    Text name("Flixel",font,9);
+    name.setPosition(windowWidth/2,windowHeight - 32);
+    Text stats("No stats for this effect.",font,9);
+    stats.setPosition(windowWidth/3,windowHeight - 32);
 
-    for(int i = 0; i < flixelCount; i++)
-    {
-        flixels.push_back(pix(2.0, Vector2f(positionX,positionY)));
-        //create vector of flixel objects.
-    }
+    man.effect_start(effectDisplayed,windowWidth,windowHeight);
 
     while (app.isOpen())
     {
         sf::Event event;
         while (app.pollEvent(event))
         {
-            // Close window : exit
             if (event.type == sf::Event::Closed)
                 app.close();
+
+            if(Keyboard::isKeyPressed(Keyboard::H))
+            {
+                showTextHUD = !showTextHUD;
+            }
+
+            if(Keyboard::isKeyPressed(Keyboard::Left) || Keyboard::isKeyPressed(Keyboard::A))
+            {
+                man.previous_effect(effectDisplayed);
+                man.effect_start(effectDisplayed,windowWidth,windowHeight);
+            }
+
+            if(Keyboard::isKeyPressed(Keyboard::Right) || Keyboard::isKeyPressed(Keyboard::D))
+            {
+                man.next_effect(effectDisplayed);
+                man.effect_start(effectDisplayed,windowWidth,windowHeight);
+            }
         }
 
-        ///refresh cycle
-        for(int i = 0; i < flixelCount; i++)
-        {
-            flixels[i].update(deltaTime);
-        }
+        man.effect_update(effectDisplayed,app,deltaTime);
 
         app.clear();
 
-        for(int i = 0; i < flixelCount; i++)
+        man.effect_draw(effectDisplayed,app);
+
+        if(showTextHUD)
         {
-            flixels[i].draw(app);
+            app.draw(info);
+            app.draw(name);
+            app.draw(stats);
         }
 
         app.display();
-        ///
-        deltaTime = dt.restart().asSeconds();
+
+        deltaTime = dt.restart().asSeconds(); //time
     }
 
     return EXIT_SUCCESS;

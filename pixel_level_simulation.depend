@@ -1,23 +1,41 @@
 # depslib dependency file v1.0
-1438476189 source:/home/selcal/Documents/pixel_level_simulation/flixel.cpp
+1438639680 source:/home/selcal/Documents/pixel_level_simulation/flixel.cpp
 	"flixel.h"
 	<cmath>
 	<ctime>
 
-1438478295 source:/home/selcal/Documents/pixel_level_simulation/main.cpp
+1438653656 source:/home/selcal/Documents/pixel_level_simulation/main.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
-	<cstdlib>
 	<fstream>
 	<ctime>
-	"flixel.h"
+	"manager.h"
 
 1438138902 /home/selcal/Documents/pixel_level_simulation/startup.h
 
 1437149368 /home/selcal/Documents/pixel_level_simulation/menu.h
 
-1438471217 /home/selcal/Documents/pixel_level_simulation/flixel.h
+1438648374 /home/selcal/Documents/pixel_level_simulation/flixel.h
 	<SFML/Graphics.hpp>
 
 1438139445 source:/home/selcal/Documents/pixel_level_simulation/startup.cpp
+
+1438574710 source:/home/selcal/Documents/pixel_level_simulation/follow.cpp
+
+1438653515 /home/selcal/Documents/pixel_level_simulation/manager.h
+	<SFML/Graphics.hpp>
+	<string>
+	<vector>
+	"flixel.h"
+	"follow.h"
+
+1438577258 /home/selcal/Documents/pixel_level_simulation/follow.h
+
+1438653996 source:/home/selcal/Documents/pixel_level_simulation/manager.cpp
+	<string>
+	<vector>
+	<SFML/Graphics.hpp>
+	"manager.h"
+	"flixel.h"
+	"follow.h"
 

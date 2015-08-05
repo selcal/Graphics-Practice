@@ -39,14 +39,15 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="cb.bmp" />
 		<Unit filename="flixel.cpp" />
 		<Unit filename="flixel.h" />
+		<Unit filename="follow.cpp" />
+		<Unit filename="follow.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="manager.cpp" />
+		<Unit filename="manager.h" />
 		<Unit filename="menu.h" />
 		<Unit filename="options.txt" />
-		<Unit filename="startup.cpp" />
-		<Unit filename="startup.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />
