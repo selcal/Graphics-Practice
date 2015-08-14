@@ -19,7 +19,7 @@ public:
     void decide_to_turn(); // uses CMATH RNG to determine whether to turn to the left or right, calls functions above inside this func
 
     void update(float const& deltaTime);
-    void draw(RenderWindow &window);
+    void draw(RenderWindow& window);
 
 private:
 

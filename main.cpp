@@ -13,16 +13,17 @@ using namespace sf;
 std::fstream file;
 
 int effectDisplayed = 0;
+const int EFFECTS = 2;
+std::string effectStats = "ayy lmoa";
 
 bool showTextHUD = true;
 
-const int windowWidth = 1366;
-const int windowHeight = 768;
+const int windowWidth = 800;
+const int windowHeight = 600;
 
 int main()
 {
     manager man;
-
     /*Options File Parsing*/
 
     srand(time(NULL));
@@ -37,11 +38,11 @@ int main()
     if(!font.loadFromFile("font.ttf"))
         return EXIT_FAILURE;
 
-    Text info(" Left/Right - Change effect \n Up/Down - Change number of elements if possible \n H - Hide this text.",font,12);
-    Text name("Flixel",font,9);
+    Text info(" Left/Right - Change effect \n Up/Down - Change number of elements if possible\n Some effects are interactive. \n H - Hide this text.",font,12);
+    Text name("Flixel",font,10);
     name.setPosition(windowWidth/2,windowHeight - 32);
-    Text stats("No stats for this effect.",font,9);
-    stats.setPosition(windowWidth/3,windowHeight - 32);
+    Text stats("No stats for this effect.",font,12);
+    stats.setPosition(windowWidth/4,windowHeight - 32);
 
     man.effect_start(effectDisplayed,windowWidth,windowHeight);
 
@@ -60,6 +61,7 @@ int main()
 
             if(Keyboard::isKeyPressed(Keyboard::Left) || Keyboard::isKeyPressed(Keyboard::A))
             {
+
                 man.previous_effect(effectDisplayed);
                 man.effect_start(effectDisplayed,windowWidth,windowHeight);
             }
@@ -73,11 +75,14 @@ int main()
 
         man.effect_update(effectDisplayed,app,deltaTime);
 
+        name.setString(man.get_effect_name(effectDisplayed));
+        stats.setString(man.get_effect_stats(effectDisplayed));
+
         app.clear();
 
         man.effect_draw(effectDisplayed,app);
 
-        if(showTextHUD)
+        if(showTextHUD == true)
         {
             app.draw(info);
             app.draw(name);
