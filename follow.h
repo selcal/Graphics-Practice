@@ -23,7 +23,6 @@ private:
     int speed;
     Vector2i position;
     Vector2i previousPosition;
-    Vertex* previousVertex; // used for deleting stale vertices.
     Color color;
 
     VertexArray VA;

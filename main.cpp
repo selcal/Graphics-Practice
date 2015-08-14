@@ -14,7 +14,7 @@ std::fstream file;
 
 int effectDisplayed = 0;
 const int EFFECTS = 2;
-std::string effectStats = "ayy lmoa";
+std::string effectStats = "ayy lmao";
 
 bool showTextHUD = true;
 
@@ -38,7 +38,7 @@ int main()
     if(!font.loadFromFile("font.ttf"))
         return EXIT_FAILURE;
 
-    Text info(" Left/Right - Change effect \n Up/Down - Change number of elements if possible\n Some effects are interactive. \n H - Hide this text.",font,12);
+    Text info(" Left/Right - Change effect \n Up/Down - Change number of elements if possible\n Some effects are interactive. \n H - Hide this text overlay.",font,12);
     Text name("Flixel",font,10);
     name.setPosition(windowWidth/2,windowHeight - 32);
     Text stats("No stats for this effect.",font,12);
@@ -51,26 +51,35 @@ int main()
         sf::Event event;
         while (app.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
+            if (event.type == Event::Closed)
                 app.close();
 
-            if(Keyboard::isKeyPressed(Keyboard::H))
+            if (event.type == Event::KeyPressed)
             {
-                showTextHUD = !showTextHUD;
+                if(event.key.code == Keyboard::Escape)
+                {
+                    app.close();
+                }
+
+                if(event.key.code == Keyboard::H)
+                {
+                    showTextHUD = !showTextHUD;
+                }
+
+                if(event.key.code == Keyboard::Left || event.key.code == Keyboard::A)
+                {
+
+                    man.previous_effect(effectDisplayed);
+                    man.effect_start(effectDisplayed,windowWidth,windowHeight);
+                }
+
+                if(event.key.code == Keyboard::Right || event.key.code == Keyboard::D)
+                {
+                    man.next_effect(effectDisplayed);
+                    man.effect_start(effectDisplayed,windowWidth,windowHeight);
+                }
             }
 
-            if(Keyboard::isKeyPressed(Keyboard::Left) || Keyboard::isKeyPressed(Keyboard::A))
-            {
-
-                man.previous_effect(effectDisplayed);
-                man.effect_start(effectDisplayed,windowWidth,windowHeight);
-            }
-
-            if(Keyboard::isKeyPressed(Keyboard::Right) || Keyboard::isKeyPressed(Keyboard::D))
-            {
-                man.next_effect(effectDisplayed);
-                man.effect_start(effectDisplayed,windowWidth,windowHeight);
-            }
         }
 
         man.effect_update(effectDisplayed,app,deltaTime);

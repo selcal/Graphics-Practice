@@ -4,7 +4,7 @@
 	<cmath>
 	<ctime>
 
-1439525582 source:/home/selcal/Documents/pixel_level_simulation/main.cpp
+1439525775 source:/home/selcal/Documents/pixel_level_simulation/main.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	<fstream>
@@ -20,7 +20,7 @@
 
 1438139445 source:/home/selcal/Documents/pixel_level_simulation/startup.cpp
 
-1439524264 source:/home/selcal/Documents/pixel_level_simulation/follow.cpp
+1439567889 source:/home/selcal/Documents/pixel_level_simulation/follow.cpp
 	"follow.h"
 
 1439525085 /home/selcal/Documents/pixel_level_simulation/manager.h
@@ -29,7 +29,7 @@
 	"flixel.h"
 	"follow.h"
 
-1439523692 /home/selcal/Documents/pixel_level_simulation/follow.h
+1439567890 /home/selcal/Documents/pixel_level_simulation/follow.h
 	<cmath>
 	<SFML/Graphics.hpp>
 

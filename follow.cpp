@@ -23,7 +23,6 @@ void follow::update(float const& deltaTime, RenderWindow& window)
     {
         previousPosition = position;
         go_to_mouse(position,window);
-
     }
 }
 
@@ -43,7 +42,7 @@ bool follow::on_mouse(Vector2i& currentPosition, RenderWindow& window)
 {
     if(currentPosition == Mouse::getPosition(window))
     {
-        return true;
+        VA.clear();
     }
     return false;
 }
