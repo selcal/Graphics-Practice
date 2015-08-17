@@ -31,7 +31,7 @@ std::string manager::get_effect_stats(int effect)
     switch(effect)
     {
         case 0:
-        return "Not interactive.";
+        return "Not the flash lib!";
         case 1:
         return "Try moving your mouse around!";
         default:

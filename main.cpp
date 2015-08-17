@@ -20,6 +20,8 @@ bool showTextHUD = true;
 const int windowWidth = 800;
 const int windowHeight = 600;
 
+const int countOffset = 10; //how much you'd like to change the amount of objects in a scene by when pressing up or down during an effect.
+
 int main()
 {
     manager man;
@@ -83,6 +85,20 @@ int main()
                 {
                     man.effect_stop(effectDisplayed);
                     man.next_effect(effectDisplayed);
+                    man.effect_start(effectDisplayed,windowWidth,windowHeight);
+                }
+                if(event.key.code == Keyboard::Down || event.key.code == Keyboard::S)
+                {
+                    man.effect_stop(effectDisplayed);
+                    man.change_param(man.particleCount, -10);
+                    std::cout << "Particle Count:" << man.particleCount << "\n";
+                    man.effect_start(effectDisplayed,windowWidth,windowHeight);
+                }
+                if(event.key.code == Keyboard::Up || event.key.code == Keyboard::W)
+                {
+                    man.effect_stop(effectDisplayed);
+                    man.change_param(man.particleCount, 10);
+                    std::cout << "Particle Count:" << man.particleCount << "\n";
                     man.effect_start(effectDisplayed,windowWidth,windowHeight);
                 }
             }

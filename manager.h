@@ -14,6 +14,10 @@ public:
     manager();
 
     const int EFFECTS = 2;
+    ///editable effect parameters:
+    int particleCount = 500;
+    int objectCount = 500;
+
     std::string get_effect_name(int effect); //GET effect's name.
     std::string get_effect_stats(int effect); //GET effect's statistics/info if any.
 
@@ -28,10 +32,6 @@ public:
     void change_param(int& parameterToChange, int offsetValue); // quick changes to private params below
 
 private:
-
-    ///editable effect parameters:
-    int particleCount = 500;
-    int objectCount = 500;
 
     ///effect containers:
     std::vector<pix> particles; // used for flixel.h

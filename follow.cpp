@@ -18,11 +18,8 @@ Vector2i follow::get_position()
 
 void follow::update(float const& deltaTime, RenderWindow& window)
 {
-    if(!on_mouse(position, window))
-    {
-        previousPosition = position;
-        go_to_mouse(position,window);
-    }
+    previousPosition = position;
+    go_to_mouse(position,window);
 }
 
 void follow::draw(RenderWindow& window)
