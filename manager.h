@@ -25,7 +25,7 @@ public:
     void previous_effect(int& effect); // <-
     void next_effect(int& effect); // ->
 
-    int change_param(int effect, int& parameterToChange); // quick changes to private params below
+    void change_param(int& parameterToChange, int offsetValue); // quick changes to private params below
 
 private:
 

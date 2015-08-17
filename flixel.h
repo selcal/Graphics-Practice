@@ -20,6 +20,7 @@ public:
 
     void update(float const& deltaTime);
     void draw(RenderWindow& window);
+    void stop();
 
 private:
 

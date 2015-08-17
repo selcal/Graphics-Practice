@@ -15,6 +15,7 @@ public:
 
     void update(float const& deltaTime, RenderWindow& window);
     void draw(RenderWindow& window);
+    void stop();
 
     void go_to_mouse(Vector2i& currentPosition, RenderWindow& window);
     bool on_mouse(Vector2i& currentPosition, RenderWindow& window);

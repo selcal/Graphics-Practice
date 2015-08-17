@@ -9,7 +9,6 @@ follow::follow(const int& _speed, const Color& _color,const Vector2i& _position,
     position = _position;
     previousPosition = _previousPosition;
     color = _color;
-    VA.setPrimitiveType(LinesStrip);
 }
 
 Vector2i follow::get_position()
@@ -30,20 +29,23 @@ void follow::draw(RenderWindow& window)
 {
     window.draw(VA);
 }
+void follow::stop()
+{
+    VA.clear();
+}
 
 void follow::go_to_mouse(Vector2i& currentPosition, RenderWindow& window)
 {
-    currentPosition.x = currentPosition.x + (Mouse::getPosition().x - currentPosition.x + speed);
-    currentPosition.y = currentPosition.y + (Mouse::getPosition().y - currentPosition.y + speed);
+    currentPosition.x = currentPosition.x + (Mouse::getPosition().x - currentPosition.x);
+    currentPosition.y = currentPosition.y + (Mouse::getPosition().y - currentPosition.y);
     VA.append(Vertex(sf::Vector2f(position),color));
 }
 
 bool follow::on_mouse(Vector2i& currentPosition, RenderWindow& window)
 {
     if(currentPosition == Mouse::getPosition(window))
-    {
-        VA.clear();
-    }
+        return true;
+
     return false;
 }
 

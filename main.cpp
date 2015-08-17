@@ -12,9 +12,8 @@ using namespace sf;
 
 std::fstream file;
 
-int effectDisplayed = 0;
-const int EFFECTS = 2;
-std::string effectStats = "ayy lmao";
+int effectDisplayed = 0; //Which effect is being displayed on screen?
+std::string effectStats = "It is a mystery";
 
 bool showTextHUD = true;
 
@@ -38,8 +37,8 @@ int main()
     if(!font.loadFromFile("font.ttf"))
         return EXIT_FAILURE;
 
-    Text info(" Left/Right - Change effect \n Up/Down - Change number of elements if possible\n Some effects are interactive. \n H - Hide this text overlay.",font,12);
-    Text name("Flixel",font,10);
+    Text info("Left/Right - Change effect \n Up/Down - Change number of elements if possible\n Some effects are interactive! \n H - Hide this text overlay.\n C - Restart the effect. ",font,12);
+    Text name("No name :O",font,10);
     name.setPosition(windowWidth/2,windowHeight - 32);
     Text stats("No stats for this effect.",font,12);
     stats.setPosition(windowWidth/4,windowHeight - 32);
@@ -66,20 +65,27 @@ int main()
                     showTextHUD = !showTextHUD;
                 }
 
+                if(event.key.code == Keyboard::C)
+                {
+                    man.effect_stop(effectDisplayed);
+                    std::cout << "Restarting " <<  man.get_effect_name(effectDisplayed) << "...WITH NO SURVIVORS.\n";
+                    man.effect_start(effectDisplayed,windowWidth,windowHeight);
+                }
+
                 if(event.key.code == Keyboard::Left || event.key.code == Keyboard::A)
                 {
-
+                    man.effect_stop(effectDisplayed);
                     man.previous_effect(effectDisplayed);
                     man.effect_start(effectDisplayed,windowWidth,windowHeight);
                 }
 
                 if(event.key.code == Keyboard::Right || event.key.code == Keyboard::D)
                 {
+                    man.effect_stop(effectDisplayed);
                     man.next_effect(effectDisplayed);
                     man.effect_start(effectDisplayed,windowWidth,windowHeight);
                 }
             }
-
         }
 
         man.effect_update(effectDisplayed,app,deltaTime);
@@ -99,9 +105,7 @@ int main()
         }
 
         app.display();
-
         deltaTime = dt.restart().asSeconds(); //time
     }
-
     return EXIT_SUCCESS;
 }

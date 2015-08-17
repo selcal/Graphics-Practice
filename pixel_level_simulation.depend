@@ -1,10 +1,10 @@
 # depslib dependency file v1.0
-1438639680 source:/home/selcal/Documents/pixel_level_simulation/flixel.cpp
+1439767885 source:/home/selcal/Documents/pixel_level_simulation/flixel.cpp
 	"flixel.h"
 	<cmath>
 	<ctime>
 
-1439525775 source:/home/selcal/Documents/pixel_level_simulation/main.cpp
+1439770850 source:/home/selcal/Documents/pixel_level_simulation/main.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	<fstream>
@@ -15,28 +15,29 @@
 
 1437149368 /home/selcal/Documents/pixel_level_simulation/menu.h
 
-1439141905 /home/selcal/Documents/pixel_level_simulation/flixel.h
+1439767850 /home/selcal/Documents/pixel_level_simulation/flixel.h
 	<SFML/Graphics.hpp>
 
 1438139445 source:/home/selcal/Documents/pixel_level_simulation/startup.cpp
 
-1439567889 source:/home/selcal/Documents/pixel_level_simulation/follow.cpp
+1439770884 source:/home/selcal/Documents/pixel_level_simulation/follow.cpp
 	"follow.h"
 
-1439525085 /home/selcal/Documents/pixel_level_simulation/manager.h
+1439827704 /home/selcal/Documents/pixel_level_simulation/manager.h
 	<SFML/Graphics.hpp>
 	<iostream>
 	"flixel.h"
 	"follow.h"
 
-1439567890 /home/selcal/Documents/pixel_level_simulation/follow.h
+1439768212 /home/selcal/Documents/pixel_level_simulation/follow.h
 	<cmath>
 	<SFML/Graphics.hpp>
 
-1439525556 source:/home/selcal/Documents/pixel_level_simulation/manager.cpp
+1439827699 source:/home/selcal/Documents/pixel_level_simulation/manager.cpp
 	"manager.h"
 	"flixel.h"
 	"follow.h"
 	<string>
 	<iomanip>
+	<ctime>
 

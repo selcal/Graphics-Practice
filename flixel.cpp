@@ -56,6 +56,10 @@ void pix::draw(RenderWindow &window)
 {
     window.draw(VA); //draw the Vertex Array right now.
 }
+void pix::stop()
+{
+    VA.clear();
+}
 
 void pix::decide_to_turn()
 {
